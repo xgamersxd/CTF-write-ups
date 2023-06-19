@@ -1,0 +1,28 @@
+Задание:
+	Sometimes you have to force logic to do what you want it to do
+
+	nc eccfordummies.nc.jctf.pro 1337
+	https://s3.cdn.justctf.team/4b1af8b5-b2b0-4232-96dd-91ce09291e8d/ecc_for_dummies.zip
+	
+Решение:
+	В архиве даны исходные коды скриптов на языке Python.
+	Видим следующее:
+	- Переманная с правильными случайными значением true/false инициализируется в начале скрипта;
+	- Для проверки введенного значения используется функция eval(). Функция eval() анализирует переданную ей строку и если строка окажется кодом, то он будет выполнен.
+	Запускаем скрипт, на все вопросы отвечаем locals(), до тех пор пока программа не выведет все локальные переменные:
+1.Question: locals()
+Question resolves to: {'cards': [False, True, False, True, False], 'question': 'locals()', 'ast_tree': <ast.Expression object at 0x7f91b540ff70>}
+
+	После этого получаем строку с правильными ответами: [False, True, False, True, False]. Отвечаем на оставшиеся вопросы как попало.
+	
+You have used all the questions.
+Now tell me one by one what I have written down on the cards.
+
+	Когда скрипт просит дать ему ответы на карточках, даем ответ в следующем формате:
+	0 1 0 1 0
+	, где 0 - False, 1 - True.
+	Получаем ответ:
+Your response: 1 0 1 0 1
+Great work!
+This is yours flag:  justCTF{S0me7ime$_L0Gic_1s_n0T_B1n4ry_0101}
+
